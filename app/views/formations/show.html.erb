@@ -1,0 +1,149 @@
+<div class="back my-5">
+  <%= link_to "Retour à votre recherche", :back  %>
+</div>
+
+<div class="card-show">
+  <% if @formation.photos.attached? %>
+    <%= cl_image_tag formation.photos.first.key %>
+  <% else %>
+    <%= image_tag "https://res.cloudinary.com/de3m2ax5t/image/upload/v1654539015/business-team_BT6YG9XMB0_zka89k.jpg" %>
+  <% end %>
+  <h2 class="text-center my-5"><%= @formation.titre %></h2>
+  <% if !@formation.courtedescription.nil? %>
+    <div class="c_card-show">
+      <div class="d-flex align-items-center text-justify">
+        <%= @formation.courtedescription %>
+      </div>
+      <div>
+        <%= render "list" %>
+      </div>
+    </div>
+  <% else %>
+      <%= render "list" %>
+  <% end %>
+
+    <% if @formation.videos.attached? || @formation.photos.attached? %>
+      <div class="c_card-show">
+        <%= render "description" %>
+        <div>
+          <div>
+            <% if @formation.videos.attached? %>
+            <% end %>
+          </div>
+          <div>
+            <% if @formation.photos.attached? %>
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <% @formation.photos.each do |photo| %>
+                    <div class="carousel-item active">
+                      <%= cl_image_tag photo.key %>
+                    </div>
+                  <% end %>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <% if @formation.certifiee %>
+            <div class="my-5 paiements">
+              <h4 class="text-center">S'inscrire à cette formation en...</h4>
+              <div class="c_paiements">
+                <div class="d-flex justify-content-center">
+                  <div class="paiements-btn d-flex justify-content-center align-items-center">En carte bleue</div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div class="paiements-btn d-flex justify-content-center align-items-center">Paypal</div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div class="paiements-btn d-flex justify-content-center align-items-center"><%= link_to "Avec votre CPF", @formation.liencpf %></div>
+                </div>
+                <div class="d-flex justify-content-center" >
+                  <button type="button" class="paiements-btn d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#paiementModal">CPF & Carte bleue</button>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <div class="d-flex justify-content-center">
+              <div class="paiement">
+                <h4 class="text-center">S'inscrire et régler</h4>
+                <div class="row">
+                  <div class="d-flex justify-content-center col-6">
+                    <div class="paiements-btn">En carte bleue</div>
+                  </div>
+                  <div class="d-flex justify-content-center col-6">
+                    <div class="paiements-btn d-flex justify-content-center align-items-center">Paypal</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <div style="width:80%" class="mx-auto">
+        <%= render "description" %>
+      </div>
+      <div>
+        <% if @formation.certifiee %>
+          <div class="my-5 paiements">
+            <h4 class="text-center">S'inscrire à cette formation en...</h4>
+            <div class="c_paiements">
+              <div class="d-flex justify-content-center">
+                <div class="paiements-btn d-flex justify-content-center align-items-center">En carte bleue</div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="paiements-btn d-flex justify-content-center align-items-center">Paypal</div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="paiements-btn d-flex justify-content-center align-items-center"><%= link_to "Avec votre CPF", @formation.liencpf %></div>
+              </div>
+              <div class="d-flex justify-content-center" >
+                <button type="button" class="paiements-btn d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#paiementModal">CPF & Carte bleue</button>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-center">
+            <div class="paiement">
+              <h4 class="text-center">S'inscrire et régler</h4>
+              <div class="row">
+                <div class="d-flex justify-content-center col-6">
+                  <div class="paiements-btn">En carte bleue</div>
+                </div>
+                <div class="d-flex justify-content-center col-6">
+                  <div class="paiements-btn d-flex justify-content-center align-items-center">Paypal</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="paiementModal" tabindex="-1" aria-labelledby="paiementModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="btn-close mx-2 my-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <p>Pour utiliser votre CPF et compléter avec un autre moyen de paiement, merci de nous contacter :</p>
+        <div class="text-center">
+          <%= link_to "par mail", new_contacts_path %> ou par téléphone au 01.01.01.01.01</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

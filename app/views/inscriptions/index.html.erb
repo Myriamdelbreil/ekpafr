@@ -1,0 +1,29 @@
+<% if @inscriptions.count.zero? %>
+  <h3 class="text-center">Vous n'avez pas encore fait de formations avec Ekpa !</h3>
+
+<% else %>
+  <h2 class="text-center font-weight-bold my-5">Vous avez réalisé <%= @inscriptions_count %> formation(s), bravo ! </h2>
+  <div class="cards">
+    <% @inscriptions.each do |inscription|  %>
+      <div class="card">
+        <% if !inscription.formation.photos.attached? %>
+          <%= image_tag "https://res.cloudinary.com/de3m2ax5t/image/upload/v1654539015/business-team_BT6YG9XMB0_zka89k.jpg" %>
+        <% else %>
+          <%= cl_image_tag inscription.formation.photos.first.key %>
+        <% end %>
+        <div class="row card-content">
+          <h5 class="font-weight-bold"><%= inscription.formation.titre %></h5>
+          <div class="text-justify d-flex flex-column col-6 justify-content-around">
+            <div class="duree">🕑 <%= inscription.formation.duree %></div>
+            <p><%= link_to "Voir plus", inscription_path(inscription) %></p>
+
+          </div>
+          <div class="d-flex flex-column col-6 justify-content-around">
+            <p>📪 <%= inscription.formation.lieu %></p>
+            <p>💶 <%= inscription.formation.prix %> €</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

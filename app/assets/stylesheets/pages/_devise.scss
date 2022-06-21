@@ -1,0 +1,26 @@
+.devise-links{
+  width: 50vw;
+  margin: auto;
+  display: grid;
+  margin-top: 2vh;
+  text-align: center;
+  a{
+    color: $navy;
+    text-decoration: none;
+    &:hover{
+      color: #546fdd;
+    }
+  }
+}
+
+@media (min-width: 100px) and (max-width: 768px) {
+  .devise-links{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .devise-links{
+    grid-template-columns: 1fr 1fr;
+  }
+}

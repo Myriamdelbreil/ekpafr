@@ -1,0 +1,48 @@
+<%= form_tag formations_path, class:"select_forms d-flex justify-content-evenly", method: :get do %>
+    <%= collection_select :sujet, :id, Theme.all.order('sujet ASC'), :id, :sujet, {include_blank: 'Thème'} %>
+    <%= text_field_tag :prix,
+    params[:prix],
+    class: "form-control",
+    placeholder: "Prix max."%>
+    <%= text_field_tag :lieu,
+    params[:lieu],
+    class: "form-control",
+    placeholder: "remote?"
+    %>
+    <%= submit_tag "🔍", class:"btn-search-bar" %>
+<% end %>
+
+<% if @formations_count.nil? %>
+  <h2 class="text-center font-weight-bold my-5">Toutes nos formations</h2>
+<% elsif @search.nil? && !@formations_count.nil? %>
+  <h2 class="text-center font-weight-bold my-5"><%= @formations_count %> résultats correspondent à votre recherche.</h2>
+<% else %>
+  <h2 class="text-center font-weight-bold my-5"><%= @formations_count %> résultats correspondent à votre recherche "<%= @search %>".</h2>
+<% end %>
+
+<div class="cards">
+  <% @formations.each do |formation| %>
+      <div class="card">
+        <% if formation.photos.nil? %>
+          <%= cl_image_tag formation.photos.first.key %>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/de3m2ax5t/image/upload/v1654539015/business-team_BT6YG9XMB0_zka89k.jpg" %>
+        <% end %>
+        <div class="row card-content">
+          <h5 class="font-weight-bold"><%= formation.titre %></h5>
+          <div class="text-justify d-flex flex-column col-6 justify-content-around">
+            <div class="duree">🕑 <%= formation.duree %></div>
+            <p><%= link_to "Voir plus", formation_path(formation) %></p>
+
+          </div>
+          <div class="d-flex flex-column col-6 justify-content-around">
+            <p>📪 <%= formation.lieu %></p>
+            <p>💶 <%= formation.prix %> €</p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+<div class="d-flex justify-content-center navigation">
+  <%= pagy_nav(@pagy).html_safe%>
+</div>

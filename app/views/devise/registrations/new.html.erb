@@ -1,0 +1,88 @@
+<div class="sign-in-form">
+  <h2>Bienvenue !</h2>
+  <div data-controller="toggle">
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <div class="c_form-inputs">
+          <%= f.input :nom, label:"Nom",
+                      required: true,
+                      autofocus: true %>
+          <%= f.input :prenom, label: "Prénom",
+                      required: true,
+                      autofocus: true %>
+        </div>
+        <div class="c_form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true %>
+          <%= f.input :email_confirmation,
+                      required: true,
+                      autofocus: true %>
+        </div>
+        <div class="c_form-inputs" data-controller="password-visibility">
+          <div>
+            <%= f.input :password, label: "Mot de passe",
+                        required: true,
+                        hint: ("8 caractères minimum, au moins une lettre et un chiffre"),
+                        input_html: { autocomplete: "new-password" },
+                        type:"password",
+                        data: {password_visibility_target:"input"}
+                        %>
+              <button type="button" data-action="password-visibility#toggle">
+                <span data-password-visibility-target="icon">Eye</span>
+                <span data-password-visibility-target="icon" class="hidden">Eye Slash</span>
+              </button>
+          </div>
+          <%= f.input :password_confirmation,
+                      label: "Confirmez votre mot de passe",
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
+        <div class="c_form-inputs">
+          <%= f.input :addresse, label: "Adresse",
+                      autofocus: true %>
+          <%= f.input :telephone, label: "Numéro de téléphone",
+                      autofocus: true %>
+        </div>
+        <div class="c_form-inputs">
+          <%= f.input :diplome, as: :select,
+                      label: "Niveau d'études", :collection =>  User::DIPLOMES,
+                      autofocus: true %>
+          <%= f.input :site_connu, as: :select,
+                      label: "Comment avez-vous connu notre site ?", collection: User::SITE_CONNU,
+                      required: true,
+                      autofocus: true %>
+        </div>
+        <div class="c_form-inputs">
+          <%= f.input :photo, as: :file,
+                      label:"Choisissez votre photo de profil" %>
+          <div class="d-flex align-items-center">
+            <%= f.check_box :newsletter,
+                            required: true, class:"mx-3", checked_value: true, unchecked_value: false %>
+            <%= f.label "Acceptez-vous de recevoir notre newsletter ?" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Finir son inscription" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="devise-links ">
+  <p>
+    Déjà inscrit ?<br>
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "Connectez-vous !", new_session_path(resource_name) %><br />
+    <% end %>
+  </p>
+
+  <p>
+    Avoir plus d'informations sur le CPF ? <br>
+    <%= link_to "C'est ici !", cpf_explications_path %>
+  </p>
+</div>

@@ -1,0 +1,32 @@
+.cpf_photo{
+  display: flex;
+  img{
+    object-fit: cover;
+    width: 90vw;
+    height: 30vh;
+    border-radius: 10px;
+    margin: auto;
+  }
+}
+.cpf_explications{
+  h3{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 39px;
+    text-align: justify;
+  }
+}
+
+.cpf_grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .c_cpf_grid{
+    h3{
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 39px;
+      text-align: center;
+    }
+  }
+}

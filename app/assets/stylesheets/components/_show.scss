@@ -1,0 +1,136 @@
+.back{
+  margin-top: 5vh;
+  margin-left: 5vw;
+  a{
+    color: lightgray;
+  }
+}
+
+.card-show{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  h2, h4{
+    font-weight: 700;
+  }
+  img{
+    height: 40vh;
+    border-radius: 10px;
+    margin: auto;
+    width: 80vw;
+    object-fit: cover;
+  }
+  .c_card-show{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5vw;
+    width: 80vw;
+    margin: auto;
+  }
+  .c-c_card-show{
+    height: 10vh;
+    background-color: $gold;
+    border-bottom: white 5px solid;
+    padding-left: 5vw;
+    font-size: 1rem;
+    width: 80%;
+    margin: auto;
+    span{
+      margin-right: 5vw;
+      font-size: 2rem;
+    }
+  }
+}
+
+.no-video{
+  background-color: lightgray;
+  padding: 3vh 3vw 3vh 3vw;
+  border-radius: 10px;
+  width: 60%;
+  margin: auto;
+}
+
+.paiements{
+  background: $navy;
+  width: 90%;
+  justify-content: space-evenly;
+  flex-direction: column;
+  color: white;
+  border-radius: 10px;
+  margin: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  .c_paiements{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: $navy;
+    border-radius: 10px;
+  }
+}
+
+.paiement{
+  margin-top: 29px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 10px;
+  background: $navy;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  h4{
+    color: white;
+  }
+}
+.navigation{
+  margin-top: 10vh;
+  color: $navy;
+  span{
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      color: $navy;
+    }
+  }
+  .active{
+    border-radius: 50%;
+    background: $gold;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media (max-width:991px) {
+  .card-show-grid {
+    grid-template-columns: 1fr;
+  }
+  .paiements{
+    .c_paiements{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card-show-grid{
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 5vh;
+    .c_card-show-grid{
+      width: 80%;
+      margin: auto;
+    }
+  }
+
+  .c_paiements{
+    margin: 2rem;
+    .paiements-btn{
+      margin: 1rem;
+    }
+  }
+
+  .back{
+    display: none;
+  }
+}

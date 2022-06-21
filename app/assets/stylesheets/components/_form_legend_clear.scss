@@ -1,0 +1,76 @@
+// In bootstrap 5 legend floats left and requires the following element
+// to be cleared. In a radio button or checkbox group the element after
+// the legend will be the automatically generated hidden input; the fix
+// in https://github.com/twbs/bootstrap/pull/30345 applies to the hidden
+// input and has no visual effect. Here we try to fix matters by
+// applying the clear to the div wrapping the first following radio button
+// or checkbox.
+legend ~ div.form-check:first-of-type {
+  clear: left;
+}
+
+.sign-in-form{
+  margin:auto;
+  background-color: $navy;
+  color: white;
+  padding: 2vw;
+  border-radius: 10px;
+  margin-top: 5vh;
+  h2{
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+  }
+  input, select{
+    background-color: white;
+    border-radius: 10px;
+  }
+  .form-actions{
+    display: flex;
+    justify-content: end;
+    input{
+      background-color: $light-gold;
+      color: $navy;
+      &:hover{
+        background-color: white;
+      }
+    }
+  }
+}
+
+.c_form-inputs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:5vw;
+}
+
+.select_forms{
+  width: 50%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  select{
+    width: 10vw;
+    color: $navy;
+    background-color: $light-gold;
+    opacity: 0.7;
+    border-radius: 10px;
+    border: none !important;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 768px) {
+  .sign-in-form{
+    width: 90vw;
+  }
+  .c_form-inputs, .select_forms{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .sign-in-form{
+    width: 60vw;
+  }
+}

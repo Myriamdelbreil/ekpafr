@@ -1,0 +1,23 @@
+<div>
+  <h4>Qu'allez-vous apprendre ?</h4>
+  <% if @formation.description.match?(/\r\n\r\n/) || @formation.description.match?(/\r\n/) || @formation.description.match?(/\n/) || @formation.description.match?(/\r/)%>
+    <%= h(@formation.description).gsub(/\r\n\r\n/, '<br> <br>').gsub(/\r\n/, '<br>').gsub(/\r/, '<br>').gsub(/\n/, '<br>').truncate(600).html_safe %>
+  <% else %>
+    <%= @formation.description.truncate(600) %>
+  <% end %>
+    <p class="text-decoration-underline" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      En savoir plus
+    </p>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="btn-close mx-2 my-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <%= h(@formation.description).gsub(/\r\n\r\n/, '<br> <br>').gsub(/\r\n/, '<br>').gsub(/\r/, '<br>').gsub(/\n/, '<br>').html_safe %>
+      </div>
+    </div>
+  </div>
+</div>

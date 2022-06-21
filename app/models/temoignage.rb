@@ -1,0 +1,2 @@
+class Temoignage < ApplicationRecord
+end

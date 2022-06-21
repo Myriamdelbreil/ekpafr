@@ -1,0 +1,82 @@
+.CTA-btn{
+  display: flex;
+  justify-content: center;
+  a {
+    background: $navy;
+    color: $light-gold;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 44px;
+    text-align: center;
+    text-decoration: none;
+    &:hover{
+      background-color: white;
+      border: $navy 1px solid;
+      color: $navy
+    }
+  }
+}
+
+.CTA-btn_small_1, .CTA-btn_small_2{
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+  a {
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    text-decoration: none;
+    width: 90%;
+  }
+}
+
+.CTA-btn_small_1{
+  a{
+    background: $light-gold;
+    color: $navy;
+    &:hover{
+      background: $navy;
+      color: $light-gold
+    }
+  }
+}
+
+.CTA-btn_small_2{
+  a{
+    background: $navy;
+    color: $light-gold;
+    &:hover{
+      background-color: $light-gold;
+      color: $navy;
+    }
+  }
+}
+
+.paiements-btn{
+  background-color: white;
+  color: $navy;
+  width: 50%;
+  border-radius: 10px;
+  text-align: center;
+  padding: 30px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  a {
+    text-decoration: none;
+    color: $navy;
+  }
+  &:hover{
+    background-color: #EAE2B7;
+  }
+}
+
+.btn-search-bar{
+  background-color: white;
+  background: white;
+  border-radius: 0px 2px 2px 0px;
+  border: none;
+}

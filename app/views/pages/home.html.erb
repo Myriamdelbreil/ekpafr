@@ -1,0 +1,81 @@
+<div class="home-intro">
+  <div class="home-intro-text">
+    <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h1>
+    <p>Donec at consequat quam. Proin convallis id nulla in semper. Curabitur molestie nisl a nulla fringilla, vitae lacinia velit commodo. Donec at consequat quam. Proin convallis id nulla in semper. Curabitur molestie nisl a nulla fringilla, vitae lacinia velit commodo. </p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div data-controller="live-search" class="search-bar">
+        <%= form_tag formations_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Trouvez votre formation !"
+          %>
+          <%= submit_tag "🔍", class: "btn btn-search-bar" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <video src="https://res.cloudinary.com/de3m2ax5t/video/upload/v1655288325/TECHNAL_-_Pr%C3%A9sentation_de_la_marque_fr87xz.mp4" class="home-video" autoplay="1" controls></video>
+  </div>
+</div>
+<div class="small-cards">
+  <div class="small-card">
+    <span>35</span>
+    <p>formations</p>
+  </div>
+  <div class="small-card">
+    <span>35</span>
+    <p>formations</p>
+  </div>
+  <div class="small-card">
+    <span>35</span>
+    <p>formations</p>
+  </div>
+</div>
+
+<div class="how-tos">
+  <div class="c_how-tos">
+    <h2 class="text-center">EKPA - mode d'emploi !</h2>
+    <div class="how-tos-grid">
+      <div class="how-to d-flex my-5">
+        <div class="d-flex justify-content-center">
+          <div class="circle rounded-circle">
+            <div>1</div>
+          </div>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+      </div>
+      <div class="how-to d-flex my-5">
+        <div class="d-flex justify-content-center">
+          <div class="circle-yellow rounded-circle">
+            <div>2</div>
+          </div>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+      </div>
+      <div class="how-to d-flex my-5">
+        <div class="d-flex justify-content-center">
+          <div class="circle rounded-circle">
+            <div>3</div>
+          </div>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <video src="https://res.cloudinary.com/de3m2ax5t/video/upload/v1654679479/Ang%C3%A8le_-_Ta_Reine_-_A_COLORS_SHOW_dcrp2v.mp4" class="home-video" autoplay="1" controls></video>
+  </div>
+</div>
+
+<div>
+  <div class="join-us-col text-center">
+    <p>Qu'attendez-vous pour nous rejoindre ?</p>
+  </div>
+  <div class="join-us-col mb-5">
+    <div class="CTA-btn">
+      <%= link_to "Inscrivez-vous", new_user_registration_path %>
+    </div>
+  </div>
+</div>

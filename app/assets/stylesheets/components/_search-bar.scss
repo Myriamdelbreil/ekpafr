@@ -1,0 +1,10 @@
+.search-bar{
+  width: 100%;
+  form{
+    display: flex;
+    #query{
+      border-radius: 2px 0px 0px 2px;
+      border: 0px;
+    }
+  }
+}

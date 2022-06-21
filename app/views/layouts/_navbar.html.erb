@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-ekpa">
+  <%= link_to root_path do %>
+    <%= image_tag "https://res.cloudinary.com/de3m2ax5t/image/upload/v1654681400/EKPA_jep8b6.png", class:"navbar-logo" %>
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse flex-grow-0">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <%= link_to "Accueil", root_path, class:"navbar-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Formations", formations_path, class:"navbar-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Contact", new_contacts_path, class:"navbar-link" %>
+      </li>
+    </ul>
+  </div>
+  <div class="collapse navbar-collapse flex-grow-0" id="navbarNavDropdown">
+      <div class="nav-item dropdown">
+        <% if user_signed_in? && current_user.photo.present? %>
+          <%= cl_image_tag current_user.photo.key %>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        <% elsif user_signed_in? && !current_user.photo.present? %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "Mon dashboard", inscriptions_path, class:"dropdown-item" %>
+            <%= link_to "Modifier mes informations", edit_user_registration_path, class:"dropdown-item" %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, class: "dropdown-item"%>
+          </div>
+        <% else %>
+          <div class="CTA-btn">
+            <%= link_to "Nous rejoindre", new_user_session_path, data: {turbo_method: :delete}, class: "CTA-btn" %>
+          </div>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+</nav>
