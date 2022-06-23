@@ -92,8 +92,10 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 gem 'material_icons'
 
-gem 'sendinblue'
+gem 'sendinblue' #to send emails not recieving
 
 gem "dotenv-rails", groups: [:development, :test]
 
 gem "font-awesome-rails"
+
+gem 'mail_form' #to recieve emails
