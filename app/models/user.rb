@@ -11,5 +11,5 @@ class User < ApplicationRecord
   DIPLOMES = ["BEP/CAP", "Baccalauréat professionnel", "Baccalauréat général/technologique", "Bac +2", "Licence", "Master", "Doctorat"]
   validates :diplome, inclusion: DIPLOMES
   SITE_CONNU = ["Google", "Facebook", "Twitter", "Instagram", "Autre réseau social", "Email", "Bouche à oreille", "Autre"]
-  validates :site_connu, inclusion: { in: SITE_CONNU }
+  validates :site_connu, inclusion: SITE_CONNU
 end
