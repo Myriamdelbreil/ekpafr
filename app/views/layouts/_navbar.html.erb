@@ -20,7 +20,7 @@
   </div>
   <div class="collapse navbar-collapse flex-grow-0" id="navbarNavDropdown">
       <div class="nav-item dropdown">
-        <% if user_signed_in? && current_user.photo.present? %>
+        <% if user_signed_in? && current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Action</a>
