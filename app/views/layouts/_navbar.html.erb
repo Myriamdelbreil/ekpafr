@@ -21,11 +21,11 @@
   <div class="collapse navbar-collapse flex-grow-0" id="navbarNavDropdown">
       <div class="nav-item dropdown">
         <% if user_signed_in? && current_user.photo.present? %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.photo.key %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to "Mon dashboard", inscriptions_path, class:"dropdown-item" %>
-            <%= link_to "Modifier mes informations", edit_user_registration_path, class:"dropdown-item" %>
-            <%= link_to "Se déconnecter", destroy_user_session_path, class: "dropdown-item"%>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
         <% elsif user_signed_in? && !current_user.photo.present? %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -36,7 +36,7 @@
           </div>
         <% else %>
           <div class="CTA-btn">
-            <%= link_to "Nous rejoindre", new_user_session_path, class: "CTA-btn" %>
+            <%= link_to "Nous rejoindre", new_user_session_path, data: {turbo_method: :delete}, class: "CTA-btn" %>
           </div>
         <% end %>
       </div>
