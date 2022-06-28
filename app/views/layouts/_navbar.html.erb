@@ -23,9 +23,9 @@
         <% if user_signed_in? && current_user.photo.present? %>
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <%= link_to "Mon dashboard", inscriptions_path, class:"dropdown-item" %>
+            <%= link_to "Modifier mes informations", edit_user_registration_path, class:"dropdown-item" %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, class: "dropdown-item"%>
           </div>
         <% elsif user_signed_in? && !current_user.photo.present? %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
