@@ -92,8 +92,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   ActionMailer::Base.smtp_settings = {
-    :port           => 537,
-    :address        => smtp.mailgun.org,
+    :port           => 587,
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
     :domain         => 'ekpafrance.herokuapp.com',
