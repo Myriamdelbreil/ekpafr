@@ -1,16 +1,24 @@
 class ContactsController < ApplicationController
+
   def new
-    @contact = Contact.new
+    @contact = ContactForm.new
   end
 
   def create
-    @contact = Contact.new(params[:contact])
+    @contact = ContactForm.new(params[:contact_form])
     @contact.request = request
     if @contact.deliver
-      flash.now[:success] = 'Message sent!'
+      flash.now[:notice] = 'Thank you for your message!'
+      render :index
     else
-      flash.now[:error] = 'Could not send message'
-      render :new
+      flash.now[:error] = 'Cannot send message.'
+      render :index
     end
+  end
+
+  private
+
+  def contact_params
+    params.require(:contact_form).permit(:name, :email, :message, :nickname, :captcha)
   end
 end
