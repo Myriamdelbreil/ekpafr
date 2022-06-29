@@ -26,6 +26,20 @@
     grid-gap: 5vw;
     width: 80vw;
     margin: auto;
+    .c_c-card-show-2{
+      width: 37vw;
+      video{
+        width: -webkit-fill-available;
+        border-radius: 10px;
+      }
+      .carousel-inner {
+        border-radius: 10px;
+        img {
+          width: 40vw;
+          height: auto;
+        }
+      }
+    }
   }
   .c-c_card-show{
     height: 10vh;
@@ -40,14 +54,6 @@
       font-size: 2rem;
     }
   }
-}
-
-.no-video{
-  background-color: lightgray;
-  padding: 3vh 3vw 3vh 3vw;
-  border-radius: 10px;
-  width: 60%;
-  margin: auto;
 }
 
 .paiements{
@@ -103,23 +109,24 @@
   }
 }
 
-@media (max-width:991px) {
-  .card-show-grid {
-    grid-template-columns: 1fr;
-  }
-  .paiements{
-    .c_paiements{
+@media (min-width: 50px) and (max-width:991px) {
+  .card-show{
+    .c_card-show{
       grid-template-columns: 1fr;
+      .c_c-card-show-2{
+        width: 80vw;
+        .carousel-inner{
+          img{
+            width: 80vw;
+          }
+        }
+      }
     }
   }
 
-  .card-show-grid{
-    margin-left: 5vw;
-    margin-right: 5vw;
-    margin-top: 5vh;
-    .c_card-show-grid{
-      width: 80%;
-      margin: auto;
+  .paiements{
+    .c_paiements{
+      grid-template-columns: 1fr;
     }
   }
 
