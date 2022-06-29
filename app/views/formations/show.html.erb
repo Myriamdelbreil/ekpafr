@@ -39,9 +39,9 @@
           <% if @formation.photos.attached? %>
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
-                <% @formation.photos.each do |photo| %>
-                  <div class="carousel-item active">
-                    <%= cl_image_tag photo.key %>
+                <% @formation.photos.each_with_index do |photo, i| %>
+                  <div class="carousel-item <%= "active" if i.zero?%>">
+                    <%= cl_image_tag photo.key, class:"d-block", alt:"..." %>
                   </div>
                 <% end %>
               </div>
@@ -104,8 +104,6 @@
     <% end %>
   </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="paiementModal" tabindex="-1" aria-labelledby="paiementModalLabel" aria-hidden="true">
