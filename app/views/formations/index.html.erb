@@ -12,6 +12,7 @@
     <%= submit_tag "🔍", class:"btn-search-bar" %>
 <% end %>
 
+
 <% if @formations_count.nil? %>
   <h2 class="text-center font-weight-bold my-5">Toutes nos formations</h2>
 <% elsif @search.nil? && !@formations_count.nil? %>
@@ -19,6 +20,7 @@
 <% else %>
   <h2 class="text-center font-weight-bold my-5"><%= @formations_count %> résultats correspondent à votre recherche "<%= @search %>".</h2>
 <% end %>
+
 
 <div class="cards">
   <% @formations.each do |formation| %>
