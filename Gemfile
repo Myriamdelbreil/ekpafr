@@ -102,3 +102,5 @@ gem 'mail_form' #to recieve emails
 
 gem "rails_admin", "~> 3.0"
 gem "sassc-rails"
+
+gem 'stripe'
