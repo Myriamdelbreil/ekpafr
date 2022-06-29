@@ -14,6 +14,9 @@ require 'faker'
 Inscription.destroy_all
 Formation.destroy_all
 Theme.destroy_all
+User.destroy_all
+
+mymy = User.create(email: "mymy_ekpa@gmail.com", password:"22Janvier", admin: true, diplome:"BEP/CAP", site_connu:"Google")
 
 THEMES = %i(marketing digital programmation)
 

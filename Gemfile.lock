@@ -67,6 +67,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (7.0.3)
       activesupport (= 7.0.3)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (7.0.3)
       activemodel (= 7.0.3)
       activesupport (= 7.0.3)
@@ -154,6 +158,18 @@ GEM
     js_cookie_rails (2.2.0)
       railties (>= 3.1)
     json (2.6.2)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -174,6 +190,7 @@ GEM
     minitest (5.16.1)
     msgpack (1.5.2)
     multi_xml (0.6.0)
+    nested_form (0.3.2)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -232,6 +249,12 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
+    rails_admin (3.0.0)
+      activemodel-serializers-xml (>= 1.0)
+      kaminari (>= 0.14, < 2.0)
+      nested_form (~> 0.3)
+      rails (>= 6.0, < 8)
+      turbo-rails (~> 1.0)
     railties (7.0.3)
       actionpack (= 7.0.3)
       activesupport (= 7.0.3)
@@ -336,6 +359,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.3)
+  rails_admin (~> 3.0)
   redis (~> 4.0)
   sassc-rails
   selenium-webdriver
