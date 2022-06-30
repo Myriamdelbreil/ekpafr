@@ -4,11 +4,7 @@
     params[:prix],
     class: "form-control",
     placeholder: "Prix max."%>
-    <%= text_field_tag :lieu,
-    params[:lieu],
-    class: "form-control",
-    placeholder: "remote?"
-    %>
+    <%= select_tag(:lieu, options_for_select([['Oui', 1], ['Non', 2], ['Peu importe', 3]])) %>
     <%= submit_tag "🔍", class:"btn-search-bar" %>
 <% end %>
 
