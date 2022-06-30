@@ -1,13 +1,16 @@
-<%= form_tag formations_path, class:"select_forms d-flex justify-content-evenly", method: :get do %>
+<%= form_tag formations_path, class:"select_forms d-flex", method: :get do %>
     <%= collection_select :sujet, :id, Theme.all.order('sujet ASC'), :id, :sujet, {include_blank: 'Thème'} %>
-    <%= text_field_tag :prix,
+    <%= number_field_tag :prix,
     params[:prix],
-    class: "form-control",
+    class: "form-control number_field",
     placeholder: "Prix max."%>
-    <%= select_tag(:lieu, options_for_select([['Oui', 1], ['Non', 2], ['Peu importe', 3]])) %>
-    <%= submit_tag "🔍", class:"btn-search-bar" %>
+    <%= select_tag(:lieu, options_for_select([['Oui', 1], ['Non', 2], ['Peu importe', 3]]), placeholder:"Remote ?") %>
+    <%= button_tag type:'submit', class:"btn-search-bar" do %>
+      <span class="material-symbols-outlined">
+        search
+      </span>
+    <% end %>
 <% end %>
-
 
 <% if @formations_count.nil? %>
   <h2 class="text-center font-weight-bold my-5">Toutes nos formations</h2>
