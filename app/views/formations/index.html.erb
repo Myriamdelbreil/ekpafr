@@ -4,7 +4,7 @@
     params[:prix],
     class: "form-control number_field",
     placeholder: "Prix max."%>
-    <%= select_tag(:lieu, options_for_select([['Oui', 1], ['Non', 2], ['Peu importe', 3]]), placeholder:"Remote ?") %>
+    <%= select_tag(:lieu, options_for_select([['Remote', 1], ['Présentiel', 2], ['Peu importe', 3]]), placeholder:"Remote ?") %>
     <%= button_tag type:'submit', class:"btn-search-bar" do %>
       <span class="material-symbols-outlined">
         search
