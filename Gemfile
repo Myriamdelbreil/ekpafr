@@ -96,11 +96,10 @@ gem 'sendinblue' #to send emails not recieving
 
 gem "dotenv-rails", groups: [:development, :test]
 
-gem "font-awesome-rails"
-
 gem 'mail_form' #to recieve emails
 
 gem "rails_admin", "~> 3.0"
-gem "sassc-rails"
 
 gem 'stripe'
+
+gem "font-awesome-rails"
