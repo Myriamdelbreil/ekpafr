@@ -103,3 +103,5 @@ gem "rails_admin", "~> 3.0"
 gem 'stripe'
 
 gem "font-awesome-rails"
+
+gem 'mailjet'

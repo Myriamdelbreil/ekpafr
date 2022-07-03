@@ -178,6 +178,10 @@ GEM
     mail_form (1.9.0)
       actionmailer (>= 5.2)
       activemodel (>= 5.2)
+    mailjet (1.7.0)
+      activesupport (>= 3.1.0)
+      rack (>= 1.4.0)
+      rest-client (>= 2.0.0)
     marcel (1.0.2)
     material_icons (2.2.1)
       railties (>= 3.2)
@@ -353,6 +357,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mail_form
+  mailjet
   material_icons
   pagy (~> 5.10)
   pg (~> 1.1)
