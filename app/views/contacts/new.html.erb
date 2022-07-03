@@ -1,10 +1,18 @@
-<h3>Contact Us</h3>
-<%= form_with(model: @contact, local: true) do |f| %>
-  <%= f.label :name, "name" %>
-  <%= f.text_field :name %>
-  <%= f.label :email, "mail address" %>
-  <%= f.email_field :email, autocomplete: "email" %>
-  <%= f.label :content, "Not like" %>
-  <%= f.text_field :content %>
-  <%= f.submit "Come" %>
-<% end %>
+<div id="contact-page">
+  <div class="text-center d-flex justify-content-between flex-column">
+    <h3>Une question ? Un renseignement ? Un devis ?</h3>
+    <h2>C'est ici !</h2>
+    <p>Nous nous tenons à votre disposition par mail (via le formulaire) ou par téléphone au XX.XX.XX.XX.XX (de xxh à xxh, du lundi au vendredi).</p>
+    <p>Réponse dans les <strong>XX</strong>h garantie !</p>
+  </div>
+  <div id="contact-form">
+    <%= simple_form_for @contact do |f| %>
+      <%= f.input :name, class:"bg-light", label:"Votre nom" %>
+      <%= f.input :email, label: "Votre adresse email", class:"bg-light" %>
+      <%= f.input :content, label:"Votre message" %>
+      <div class="mx-auto">
+        <%= f.submit "C'est envoyé !", class:"mail-btn mx-auto" %>
+      </div>
+    <% end %>
+  </div>
+</div>
