@@ -25,6 +25,7 @@ legend ~ div.form-check:first-of-type {
   input, select{
     background-color: white;
     border-radius: 10px;
+    }
   }
   .form-actions{
     display: flex;
@@ -37,12 +38,25 @@ legend ~ div.form-check:first-of-type {
       }
     }
   }
-}
+
 
 .c_form-inputs{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap:5vw;
+  .password{
+    width: 100%;
+    input {
+      border-radius: 10px 0px 0px 10px;
+    }
+  }
+  .password-visibility {
+    background: $navy;
+    color: white;
+    border-radius: 0px 10px 10px 0px;
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+  }
 }
 
 .select_forms{

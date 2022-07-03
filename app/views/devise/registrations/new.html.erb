@@ -24,29 +24,34 @@
         </div>
         <div class="c_form-inputs" data-controller="password-visibility">
           <div>
-            <%= f.input :password, label: "Mot de passe",
-                        required: true,
-                        hint: ("8 caractères min., une lettre et un chiffre"),
-                        input_html: { autocomplete: "new-password", data: { password_visibility_target: "input1" } },
-                        type:"password"
-                        %>
-              <div type="button" data-action="click->password-visibility#password1" >
-                <span class="material-symbols-outlined" data-password-visibility-target="icon1">
-                  visibility
-                </span>
-                <span class="material-symbols-outlined d-none" data-password-visibility-target="icon2">
-                visibility_off
-                </span>
-              </div>
+            <label for="user_password" class="mb-2">Mot de passe :</label>
+            <div class="d-flex">
+              <%= f.input :password, label: false,
+                          required: true,
+                          input_html: { autocomplete: "new-password", data: { password_visibility_target: "input1" } },
+                          type:"password"
+                %>
+                <div type="button" data-action="click->password-visibility#password1" class="d-flex align-items-center password-visibility" >
+                  <span class="material-symbols-outlined" data-password-visibility-target="icon1">
+                    visibility
+                  </span>
+                  <span class="material-symbols-outlined d-none" data-password-visibility-target="icon2">
+                  visibility_off
+                  </span>
+                </div>
+            </div>
           </div>
           <div>
-            <%= f.input :password_confirmation,
-                        label: "Confirmez votre mot de passe",
-                        required: true,
-                        input_html: { autocomplete: "new-password", data: { password_visibility_target: "input2" } } %>
-            <div type="button" data-action="click->password-visibility#password2" >
-                <span data-password-visibility-target="icon3" class="material-symbols-outlined">visibility</span>
-                <span data-password-visibility-target="icon4" class="material-symbols-outlined d-none">visibility_off</span>
+            <label for="user_password" class="mb-2">Confirmez votre mot de passe :</label>
+            <div class="d-flex">
+              <%= f.input :password_confirmation,
+                          label: false,
+                          required: true,
+                          input_html: { autocomplete: "new-password", data: { password_visibility_target: "input2" } } %>
+              <div type="button" data-action="click->password-visibility#password2" class="d-flex align-items-center password-visibility">
+                  <span data-password-visibility-target="icon3" class="material-symbols-outlined">visibility</span>
+                  <span data-password-visibility-target="icon4" class="material-symbols-outlined d-none">visibility_off</span>
+              </div>
             </div>
           </div>
         </div>
