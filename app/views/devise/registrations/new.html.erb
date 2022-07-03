@@ -29,11 +29,11 @@
                         hint: ("8 caractères minimum, au moins une lettre et un chiffre"),
                         input_html: { autocomplete: "new-password" },
                         type:"password",
-                        data: {password_visibility_target:"input"}
+                        data: {password_visibility_target: "input" }
                         %>
-              <button type="button" data-action="password-visibility#toggle">
+              <button type="button" data-action="click->password-visibility#password">
                 <span data-password-visibility-target="icon">Eye</span>
-                <span data-password-visibility-target="icon" class="hidden">Eye Slash</span>
+                <span data-password-visibility-target="icon" class="d-none">Eye Slash</span>
               </button>
           </div>
           <%= f.input :password_confirmation,
