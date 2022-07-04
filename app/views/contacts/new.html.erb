@@ -8,7 +8,7 @@
   <div id="contact-form">
     <%= simple_form_for @contact do |f| %>
       <%= f.input :name, class:"bg-light", label:"Votre nom" %>
-      <%= f.input :email, label: "Votre adresse email", class:"bg-light" %>
+      <%= f.input :email, label: "Votre adresse email" %>
       <%= f.input :content, label:"Votre message" %>
       <div class="mx-auto">
         <%= f.submit "C'est envoyé !", class:"mail-btn mx-auto" %>
