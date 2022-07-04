@@ -105,3 +105,5 @@ gem 'stripe'
 gem "font-awesome-rails"
 
 gem 'mailjet'
+
+gem "jquery-rails"

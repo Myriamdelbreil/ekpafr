@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_03_171642) do
+
+ActiveRecord::Schema[7.0].define(version: 2022_07_03_215507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_03_171642) do
     t.datetime "updated_at", null: false
     t.bigint "theme_id", null: false
     t.text "courtedescription"
+    t.string "stripe_plan_name"
+    t.string "paypal_plan_name"
     t.index ["theme_id"], name: "index_formations_on_theme_id"
   end
 
@@ -73,6 +76,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_03_171642) do
     t.datetime "updated_at", null: false
     t.index ["formation_id"], name: "index_inscriptions_on_formation_id"
     t.index ["user_id"], name: "index_inscriptions_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.boolean "paid", default: false
+    t.string "token"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ordes", force: :cascade do |t|
+    t.integer "status"
+    t.string "token"
+    t.string "charge_id"
+    t.string "error_message"
+    t.string "customer_id"
+    t.integer "payment_gateway"
+    t.bigint "user_id", null: false
+    t.bigint "formation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["formation_id"], name: "index_ordes_on_formation_id"
+    t.index ["user_id"], name: "index_ordes_on_user_id"
   end
 
   create_table "temoignages", force: :cascade do |t|
@@ -114,4 +140,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_03_171642) do
   add_foreign_key "formations", "themes"
   add_foreign_key "inscriptions", "formations"
   add_foreign_key "inscriptions", "users"
+  add_foreign_key "ordes", "formations"
+  add_foreign_key "ordes", "users"
 end
