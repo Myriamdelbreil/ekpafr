@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       send_email_reserved(@contact)
-      redirect_to root_path
+      redirect_to root_path, flash[:notice] = "mail envoyé!"
     else
       render :new
     end
