@@ -1,23 +1,18 @@
-<div class="container">
-  <h1>Contact Form</h1>
-  <%= form_for @contact do |f| %>
-    <div class="col-md-6">
-      <%= f.label :name %><br>
-      <%= f.text_field  :name, required: true, class: "contact-form-text-area" %><br>
-
-      <%= f.label :email %><br>
-      <%= f.text_field :email, required: true, class: "contact-form-text-area" %><br>
-
-      <%= f.label :body %><br>
-      <%= f.text_area :body, rows: 8, cols: 40, required: true, class: "contact-form-text-area",
-            placeholder: "Send me a message"%><br>
-
-      <div class= "d-none">
-        <%= f.label :nickname %>
-        <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+<div id="contact-page">
+  <div class="text-center d-flex justify-content-between flex-column">
+    <h3>Une question ? Un renseignement ? Un devis ?</h3>
+    <h2>C'est ici !</h2>
+    <p>Nous nous tenons à votre disposition par mail (via le formulaire) ou par téléphone au XX.XX.XX.XX.XX (de xxh à xxh, du lundi au vendredi).</p>
+    <p>Réponse dans les <strong>XX</strong>h garantie !</p>
+  </div>
+  <div id="contact-form">
+    <%= simple_form_for @contact do |f| %>
+      <%= f.input :name, class:"bg-light", label:"Votre nom" %>
+      <%= f.input :email, label: "Votre adresse email", class:"bg-light" %>
+      <%= f.input :content, label:"Votre message" %>
+      <div class="mx-auto">
+        <%= f.submit "C'est envoyé !", class:"mail-btn mx-auto" %>
       </div>
-
-      <%= f.submit 'Send Message', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
