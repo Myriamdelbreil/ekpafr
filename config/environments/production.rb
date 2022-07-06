@@ -103,7 +103,7 @@ Rails.application.configure do
 
   Mailjet.configure do |config|
     config.api_key = ENV['MJ_APIKEY_PUBLIC']
-    config.secret_key = '69d51e645d3445726c2cd2bac84a6257'
+    config.secret_key = ENV['MJ_APIKEY_PRIVATE']
     config.default_from = 'myriam.delbreil@live.fr'
     # Mailjet API v3.1 is at the moment limited to Send API.
     # We’ve not set the version to it directly since there is no other endpoint in that version.
