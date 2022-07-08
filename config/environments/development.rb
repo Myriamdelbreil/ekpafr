@@ -71,9 +71,11 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
-  config.action_mailer.delivery_method = :mailjet_api
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+
+  #mailjet config => corriger stmp
   # config.action_mailer.delivery_method = :mailjet_stmp
   # config.action_mailer.smtp_settings = {
   #   address: 'smtp.gmail.com',
@@ -84,16 +86,25 @@ Rails.application.configure do
   #   authentication: 'plain',
   #   enable_starttls_auto: true
   # }
-  Mailjet.configure do |config|
-    config.api_key = ENV['MJ_APIKEY_PUBLIC']
-    config.secret_key = ENV['MJ_APIKEY_PRIVATE']
-    config.default_from = 'myriam.delbreil@live.fr'
-    # Mailjet API v3.1 is at the moment limited to Send API.
-    # We’ve not set the version to it directly since there is no other endpoint in that version.
-    # We recommend you create a dedicated instance of the wrapper set with it to send your emails.
-    # If you're only using the gem to send emails, then you can safely set it to this version.
-    # Otherwise, you can remove the dedicated line into config/initializers/mailjet.rb.
-    config.api_version = 'v3.1'
-  end
+  # Mailjet.configure do |config|
+  #   config.api_key = ENV['MJ_APIKEY_PUBLIC']
+  #   config.secret_key = ENV['MJ_APIKEY_PRIVATE']
+  #   config.default_from = 'myriam.delbreil@live.fr'
+  #   # Mailjet API v3.1 is at the moment limited to Send API.
+  #   # We’ve not set the version to it directly since there is no other endpoint in that version.
+  #   # We recommend you create a dedicated instance of the wrapper set with it to send your emails.
+  #   # If you're only using the gem to send emails, then you can safely set it to this version.
+  #   # Otherwise, you can remove the dedicated line into config/initializers/mailjet.rb.
+  #   config.api_version = 'v3.1'
+  # end
 
+
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp-relay.sendinblue.com',
+    :port => 587,
+    :user_name => 'YOUR_SENDINBLUE_EMAIL',
+    :password => 'YOUR_SENDINBLUE_PASSWORD',
+    :authentication => 'login',
+    :enable_starttls_auto => true
+  }
 end
