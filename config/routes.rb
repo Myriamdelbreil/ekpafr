@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     resources :inscriptions, only: [:new, :create]
   end
 
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
+
   resources :temoignages, only: [:index]
 
   resources :inscriptions, only: [:index, :show]
