@@ -6,13 +6,29 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    from = "myriam.delbreil@live.fr"
-    to = 'myriam.delbreil@live.fr'
-    subject = ' '
-    content = "De : #{@contact.email} - #{@contact.name} - #{@contact.content}"
-    mail = Mail.new(from, subject, to, content)
+    data = JSON.parse("{
+      'personalizations': [
+        {
+          'to': [
+            {
+              'email': 'myriam.delbreil@live.fr'
+            }
+          ],
+          'subject': ' '
+        }
+      ],
+      'from': {
+        'email': 'myriam.delbreil@live.fr'
+      },
+      'content': [
+        {
+          'type': 'text/plain',
+          'value': 'De #{@contact.name}, #{@contact.email}\n #{@contact.content}'
+        }
+      ]
+    }")
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-    response = sg.client.mail._('send').post(request_body: mail.to_json)
+    response = sg.client.mail._("send").post(request_body: data)
     puts response.status_code
     puts response.body
     puts response.headers
