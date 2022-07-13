@@ -23,15 +23,18 @@ class ContactsController < ApplicationController
       "content": [
         {
           "type": "text/plain",
-          "value": "and easy to do anywhere, even with Ruby"
+          "value": " "
         }
       ]
     }')
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    data["content"].first["value"] = "De : #{@contact.email} - #{@contact.name} \n #{@contact.content}"
     response = sg.client.mail._("send").post(request_body: data)
+    puts data
     puts response.status_code
     puts response.body
     puts response.headers
+    # byebug
   end
 
 
