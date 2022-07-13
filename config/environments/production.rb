@@ -97,4 +97,7 @@ Rails.application.configure do
   raise_delivery_errors: true
 }
 
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.default_url_options = { host: "http://ekpafrance.herokuapp.com/" }
+
 end
