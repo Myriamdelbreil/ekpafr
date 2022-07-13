@@ -136,6 +136,8 @@ GEM
     ffi (1.15.5)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
+    font-awesome-sass (6.1.1)
+      sassc (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -364,6 +366,7 @@ DEPENDENCIES
   dotenv-rails
   faker!
   font-awesome-rails
+  font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
   jquery-rails
