@@ -107,3 +107,5 @@ gem "font-awesome-rails"
 gem 'mailjet'
 
 gem "jquery-rails"
+
+gem 'sendgrid-ruby'
