@@ -108,4 +108,4 @@ gem 'mailjet'
 
 gem "jquery-rails"
 
-gem 'sendgrid-ruby'
+gem 'sendgrid-actionmailer'
