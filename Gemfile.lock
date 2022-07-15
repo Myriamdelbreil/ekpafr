@@ -319,6 +319,9 @@ GEM
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     stripe (6.4.0)
+    stripe_event (2.4.0)
+      activesupport (>= 3.1)
+      stripe (>= 2.8, < 7)
     strscan (3.0.3)
     thor (1.2.1)
     tilt (2.0.10)
@@ -389,6 +392,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   stripe
+  stripe_event
   turbo-rails
   tzinfo-data
   web-console

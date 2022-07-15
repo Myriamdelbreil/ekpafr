@@ -64,6 +64,12 @@
     </div>
   <% end %>
 
+<%= simple_form_for [@formation, @new_order] do |f| %>
+  <%= f.input :formation, input_html: {value: @formation} %>
+  <%= f.input :user, input_html: {value: current_user} %>
+  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<% end %>
+
   <div>
     <% if user_signed_in? %>
       <% if @formation.certifiee %>
