@@ -111,3 +111,5 @@ gem "jquery-rails"
 gem 'sendgrid-actionmailer'
 
 gem "font-awesome-sass", "~> 6.1"
+
+gem 'stripe_event'

@@ -36,6 +36,7 @@ class FormationsController < ApplicationController
 
   def show
     @formation = Formation.find(params[:id])
+    @new_order = Order.new
   end
 
   def search_with_only_sujet
