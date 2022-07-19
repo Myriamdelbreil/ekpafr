@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    p params[:formation_id]
     formation = Formation.find(params[:formation_id])
     order = Order.create!(formation: formation, amount: formation.prix, state: 'pending', user: current_user)
     session = Stripe::Checkout::Session.create(
