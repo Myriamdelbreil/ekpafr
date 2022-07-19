@@ -1,7 +1,8 @@
 <div class="home-intro">
   <div class="home-intro-text">
-    <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h1>
-    <p>Donec at consequat quam. Proin convallis id nulla in semper. Curabitur molestie nisl a nulla fringilla, vitae lacinia velit commodo. Donec at consequat quam. Proin convallis id nulla in semper. Curabitur molestie nisl a nulla fringilla, vitae lacinia velit commodo. </p>
+    <h1>EKPA France, centre de formation professionnelle (CPF) continue pour adultes. </h1>
+    <p>Obtenez votre certification professionnelle, avec un diplôme reconnu par l’Etat. Notre centre de formation éligible au CPF vous forme au métier de votre rêve. <br><br>Nous proposons des formations de qualités, qui sont analysées et sélectionnées avec soin, certifiantes et qui vous garantissent des résultats rapides et efficaces. <br><br>Ces formations sont destinées à ceux qui pensent que se former n’est pas accessible à tous, à ceux qui n’osent pas découvrir le métier de leurs rêves, ou encore, ceux qui souhaiteraient se perfectionner dans leur domaine de prédilections. L’expérience et le suivi de nos formateurs vous permettront de vous guider dans votre réussite.</p>
+    <br>
     <div class="d-flex justify-content-between align-items-center">
       <div data-controller="live-search" class="search-bar">
         <%= form_tag formations_path, method: :get do %>
@@ -69,13 +70,18 @@
   </div>
 </div>
 
-<div>
-  <div class="join-us-col text-center">
-    <p>Qu'attendez-vous pour nous rejoindre ?</p>
+<div class="row w-50 mx-auto">
+  <div class="col">
+    <%= image_tag "https://res.cloudinary.com/de3m2ax5t/image/upload/v1658165805/LogoQualiopi-Marianne-150dpi-31_tsuk3d.jpg" %>
   </div>
-  <div class="join-us-col mb-5">
-    <div class="CTA-btn">
-      <%= link_to "Inscrivez-vous", new_user_registration_path %>
+  <div class="col">
+    <div class="join-us-col text-center">
+      <p>Qu'attendez-vous pour nous rejoindre ?</p>
+    </div>
+    <div class="join-us-col mb-5">
+      <div class="CTA-btn">
+        <%= link_to "Inscrivez-vous", new_user_registration_path %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
+  require 'paypal'
   before_action :paypal_init, :except => [:show, :create]
+  skip_before_action :verify_authenticity_token
+
   def show
     @order = current_user.orders.find(params[:id])
   end
@@ -16,8 +19,8 @@ class OrdersController < ApplicationController
         currency: 'eur',
         quantity: 1
       }],
-      success_url: "http://ekpafrance.herokuapp.com/inscriptions",
-      cancel_url: "http://ekpafrance.herokuapp.com"
+      success_url: 'http://ekpafrance.herokuapp.com/inscriptions',
+      cancel_url: 'http://ekpafrance.herokuapp.com'
     )
     order.update(checkout_session_id: session.id)
     redirect_to new_formation_order_payment_path(formation, order), status: :see_other
@@ -44,10 +47,8 @@ class OrdersController < ApplicationController
       order = Order.new
       order.price = price.to_i
       order.token = response.result.id
-      if order.save
-        return render :json => {:token => response.result.id}, :status => :ok
-      end
-    rescue PayPalHttp::HttpError => ioe
+      return render :json => {:token => response.result.id}, :status => :ok if order.save
+      rescue PayPalHttp::HttpError => ioe
       # HANDLE THE ERROR
     end
   end
@@ -69,9 +70,7 @@ class OrdersController < ApplicationController
   private
 
   def paypal_init
-    client_id = 'AdurcPY4JqwnFY6qKcEtIvYITb5_22nOO8i9FH5WWggKmCB1VLxf9R_UQHzNAE6O9taDhI0bHLP3FvLo'
-    client_secret = 'EMLyf2UfO4VAvVC-h5_j_YhcPOWXeD-MJOadVmL77zWA_kZLWbf2ADlz7bbXepadvjSLK0nYmzbme4UI'
-    environment = PayPal::SandboxEnvironment.new client_id, client_secret
+    environment = PayPal::SandboxEnvironment.new ENV['client_id'], ENV['client_secret']
     @client = PayPal::PayPalHttpClient.new environment
   end
 end

@@ -60,34 +60,57 @@ legend ~ div.form-check:first-of-type {
 }
 
 .select_forms{
-  width: 50%;
-  margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-around;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: $navy 1px solid;
+  justify-content: center;
+  margin: 0px;
   margin-top: 10vh;
+  padding: 10px;
+  border-radius: 10px;
   .number_field {
-    border-radius: 10px;
-    border: $navy 1px solid !important;
+    border: none !important;
     color: $navy;
     width: 10vw;
+    border-right: $navy 1px solid !important;
+    border-left: $navy 1px solid !important;
+    text-align: center;
+    input::placeholder{
+      color: $navy;
+    }
   }
   select{
-    width: 10vw;
-    color: white;
-    background-color: $navy;
-    border-radius: 10px;
-    border: $navy 1px solid !important;
+    width: 30vw;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    padding: 5px;
+    .select_theme{
+      border-right: $navy 1px solid !important;
+      border-left: $navy 1px solid !important;
+    }
+    #lieu{
+      border-left: $navy 1px solid !important;
+      border-right: none !important;
+    }
+    color: navy;
   }
   button{
-    border: 1px solid $navy;
+    margin-left: 10px;
+    // border: 1px solid $navy;
+    background-color: $light-gold;
+    border-radius: 100%;
     color: $navy;
-    border-radius: 10px;
-    padding: 10px;
-    &:hover{
-      background-color: $navy;
-      color: white;
+    display: flex;
+    align-items: center;
+    .search_btn{
+      font-weight: 900;
     }
+    // &:hover{
+    //   background-color: $navy;
+    //   color: white;
+    // }
   }
 }
 

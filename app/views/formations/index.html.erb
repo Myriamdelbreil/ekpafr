@@ -1,16 +1,18 @@
-<%= form_tag formations_path, class:"select_forms d-flex", method: :get do %>
-    <%= collection_select :sujet, :id, Theme.all.order('sujet ASC'), :id, :sujet, {include_blank: 'Thème'} %>
-    <%= number_field_tag :prix,
-    params[:prix],
-    class: "form-control number_field",
-    placeholder: "Prix max."%>
-    <%= select_tag(:lieu, options_for_select([['Remote', 1], ['Présentiel', 2], ['Peu importe', 3]]), placeholder:"Remote ?") %>
-    <%= button_tag type:'submit', class:"btn-search-bar" do %>
-      <span class="material-symbols-outlined">
-        search
-      </span>
-    <% end %>
-<% end %>
+<div class="w-50 mx-auto">
+  <%= form_tag formations_path, class:"select_forms d-flex", method: :get do %>
+      <%= collection_select :sujet, :id, Theme.all.order('sujet ASC'), :id, :sujet, {include_blank: 'Thème'}, class:"select_theme" %>
+      <%= number_field_tag :prix,
+      params[:prix],
+      class: "form-control number_field",
+      placeholder: "Prix max."%>
+      <%= select_tag(:lieu, options_for_select([['Remote', 1], ['Présentiel', 2], ['Peu importe', 3]]), placeholder:"Remote ?") %>
+      <%= button_tag type:'submit', class:"btn-search-bar" do %>
+        <span class="material-symbols-outlined search_btn">
+          search
+        </span>
+      <% end %>
+  <% end %>
+</div>
 
 <% if @formations_count.nil? %>
   <h2 class="text-center font-weight-bold my-5">Toutes nos formations</h2>

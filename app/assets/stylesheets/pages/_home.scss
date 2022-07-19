@@ -17,7 +17,6 @@ body {
   padding-bottom: 3rem;
   .home-intro-text{
     margin: 3rem 3rem;
-    margin-top: 0rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -32,7 +31,7 @@ body {
   }
   .home-video{
     width: 90%;
-    height: 90%;
+    // height: 90%;
     object-fit: cover;
   }
 }
@@ -202,7 +201,7 @@ body {
 @media (min-width: 1200px) {
   .home-intro {
     grid-template-columns: 1fr 1fr;
-    height: 70vh;
+    height: 80vh;
   }
   .how-tos{
     grid-template-columns: 1fr 1fr;

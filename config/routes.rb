@@ -28,4 +28,7 @@ Rails.application.routes.draw do
 
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 
+  post :create_order, :to => 'orders#create_order'
+  post :capture_order, :to => 'orders#capture_order'
+
 end
