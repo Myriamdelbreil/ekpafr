@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   def create
     formation = Formation.find(params[:formation_id])
     order = Order.create!(formation: formation, amount: formation.prix, state: 'pending', user: current_user)
+    Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
