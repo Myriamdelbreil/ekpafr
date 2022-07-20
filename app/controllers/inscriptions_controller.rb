@@ -5,8 +5,6 @@ class InscriptionsController < ApplicationController
     @new_inscription = Inscription.new
     @order = current_user.orders.where(state: "pending").last
     @formation = @order.formation if !@order.nil?
-    end
-
   end
 
   def show
