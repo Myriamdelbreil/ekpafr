@@ -1,4 +1,4 @@
-class OrdersController::CheckoutsController  < ApplicationController
+class OrdersController < ApplicationController
   before_action :paypal_init, :except => [:show, :create]
   skip_before_action :verify_authenticity_token
 
