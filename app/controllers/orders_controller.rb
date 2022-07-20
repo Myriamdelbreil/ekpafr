@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class OrdersController::CheckoutsController  < ApplicationController
   before_action :paypal_init, :except => [:show, :create]
   skip_before_action :verify_authenticity_token
 
@@ -11,13 +11,14 @@ class OrdersController < ApplicationController
     order = Order.create!(formation: formation, amount: formation.prix, state: 'pending', user: current_user)
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
+      customer_email: current_user.email,
       line_items: [{
         name: formation.titre,
         amount: formation.prix * 100,
         currency: 'eur',
-        quantity: 1
+        quantity: 1,
       }],
-      success_url: 'http://www.ekpafrance.com/inscriptions',
+      success_url: 'http://www.ekpafrance.com/' + "success?session_id={CHECKOUT_SESSION_ID }",
       cancel_url: 'http://www.ekpafrance.com'
     )
     order.update(checkout_session_id: session.id)
@@ -62,6 +63,11 @@ class OrdersController < ApplicationController
     rescue PayPalHttp::HttpError => ioe
       # HANDLE THE ERROR
     end
+  end
+
+  def stripe_success
+    session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    @customer = Stripe::Customer.retrieve(session.customer)
   end
 
   private

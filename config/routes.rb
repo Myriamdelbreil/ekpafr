@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   get "/cpf_explications", to: "pages#cpf_explications", as: "cpf_explications"
   get "search", to: "formations#search"
 
-  mount StripeEvent::Engine, at: '/stripe-webhooks'
+  # mount StripeEvent::Engine, at: '/stripe-webhooks'
+  resources :webhooks, only: [:create]
+
 
   post :create_order, :to => 'orders#create_order'
   post :capture_order, :to => 'orders#capture_order'
