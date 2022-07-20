@@ -28,7 +28,6 @@ Rails.application.routes.draw do
 
   # mount StripeEvent::Engine, at: '/stripe-webhooks'
   resources :webhooks, only: [:create]
-  get 'success', to: 'orders#success'
 
   post :create_order, :to => 'orders#create_order'
   post :capture_order, :to => 'orders#capture_order'
