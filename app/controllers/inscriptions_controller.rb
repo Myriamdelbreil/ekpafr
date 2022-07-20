@@ -4,7 +4,9 @@ class InscriptionsController < ApplicationController
     @inscriptions_count = Inscription.includes(:formation).where(user: current_user).all.count
     @new_inscription = Inscription.new
     @order = current_user.orders.where(state: "pending").last
-    @formation = @order.formation
+    @formation = @order.formation if !@order.nil?
+    end
+
   end
 
   def show
