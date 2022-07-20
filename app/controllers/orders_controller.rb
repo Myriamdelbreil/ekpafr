@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
         currency: 'eur',
         quantity: 1,
       }],
-      success_url: 'http://www.ekpafrance.com/' + "success?session_id={CHECKOUT_SESSION_ID }",
+      success_url: 'http://www.ekpafrance.com/inscriptions',
       cancel_url: 'http://www.ekpafrance.com'
     )
     order.update(checkout_session_id: session.id)
