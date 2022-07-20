@@ -2,6 +2,9 @@ class InscriptionsController < ApplicationController
   def index
     @pagy, @inscriptions = pagy(Inscription.includes(:formation).where(user: current_user).all, items: 10)
     @inscriptions_count = Inscription.includes(:formation).where(user: current_user).all.count
+    @new_inscription = Inscription.new
+    @order = current_user.orders.where(state: "pending").last
+    @formation = @order.formation
   end
 
   def show
@@ -9,20 +12,27 @@ class InscriptionsController < ApplicationController
     @formation = @inscription.formation
   end
 
-  def new
-    @new_inscription = Inscription.new
-    @formation = Formation.find(params[:formation_id])
-    @user = current_user
-  end
-
   def create
     @new_inscription = Inscription.new(params_inscription)
-    @new_inscription.formation = Formation.find(params[:formation_id])
+    p params_inscription
+    #raise
+    @order = current_user.orders.last
+    @new_inscription.formation = @order.formation
     @new_inscription.user = current_user
-    if @new_inscription.save
+    @new_inscription.order = @order
+    session = Stripe::Checkout::Session.retrieve(@order.checkout_session_id)
+    if session.payment_status == "paid"
+      @order.state = "paid"
+      @new_inscription.save!
       redirect_to inscription_path(@new_inscription), notice: "Félicitations, vous êtes bien inscrits !"
     else
-      redirect_to formation_path(Formation.find(params[:formation_id])), alert: "Désolés, une erreur s'est produite, merci de réessayer."
+      redirect_to root_path
     end
+  end
+
+  private
+
+  def params_inscription
+    params.require(:inscription).permit(:formation_id, :user_id, :order_id)
   end
 end

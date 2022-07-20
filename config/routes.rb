@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :formations, only: [:index, :show, :search] do
-    resources :inscriptions, only: [:new, :create]
     resources :orders, only: [:create] do
       resources :payments, only: :new
     end
   end
+  resources :inscriptions, only: [:new, :create]
 
   resources :orders, only: :show
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get "search", to: "formations#search"
 
   # mount StripeEvent::Engine, at: '/stripe-webhooks'
-  resources :webhooks, only: [:create]
+  # resources :webhooks, only: [:create]
 
   post :create_order, :to => 'orders#create_order'
   post :capture_order, :to => 'orders#capture_order'
