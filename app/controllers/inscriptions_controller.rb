@@ -15,7 +15,6 @@ class InscriptionsController < ApplicationController
   def create
     @new_inscription = Inscription.new(params_inscription)
     p params_inscription
-    #raise
     @order = current_user.orders.last
     @new_inscription.formation = @order.formation
     @new_inscription.user = current_user
@@ -26,7 +25,7 @@ class InscriptionsController < ApplicationController
       @new_inscription.save!
       redirect_to inscription_path(@new_inscription), notice: "Félicitations, vous êtes bien inscrits !"
     else
-      redirect_to root_path
+      redirect_to error_path
     end
   end
 

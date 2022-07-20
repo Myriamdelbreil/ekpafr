@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "/about_us", to: "pages#about_us", as: "about_us"
   get "/cpf_explications", to: "pages#cpf_explications", as: "cpf_explications"
   get "search", to: "formations#search"
+  get "error", to: "pages#error"
 
   # mount StripeEvent::Engine, at: '/stripe-webhooks'
   # resources :webhooks, only: [:create]
