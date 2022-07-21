@@ -22,6 +22,7 @@ class InscriptionsController < ApplicationController
     session = Stripe::Checkout::Session.retrieve(@order.checkout_session_id)
     if session.payment_status == "paid"
       @order.state = "paid"
+      @order.save
       @new_inscription.save!
       redirect_to inscription_path(@new_inscription), notice: "Félicitations, vous êtes bien inscrits !"
     else
