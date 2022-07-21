@@ -28,11 +28,16 @@
 <% end %>
   <% if !@order.nil? %>
     <% if @order.state == "pending" %>
-      <%= simple_form_for [@new_inscription] do |f| %>
-        <%= f.input :formation, input_html: {value: @formation.id}, as: :hidden %>
-        <%= f.input :user, input_html: {value: current_user.id}, as: :hidden %>
-        <%= f.input :order, input_html: {value: @order.id}, as: :hidden %>
-        <%= f.submit %>
-      <% end %>
+      <div class="container bg-info py-4 rounded">
+        <h3 class="text-center">Vous avez une inscription à valider pour la formation <%= @order.formation.titre %> !</h3>
+        <%= simple_form_for [@new_inscription] do |f| %>
+          <%= f.input :formation, input_html: {value: @formation.id}, as: :hidden %>
+          <%= f.input :user, input_html: {value: current_user.id}, as: :hidden %>
+          <%= f.input :order, input_html: {value: @order.id}, as: :hidden %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Valider votre inscription", class:"btn btn-light" %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
