@@ -1,12 +1,13 @@
 <% if @inscriptions.count.zero? %>
   <h3 class="text-center">Vous n'avez pas encore fait de formations avec Ekpa !</h3>
-  <% if @order.state == "pending" && !@order.nil? %>
-    <p>valider votre inscription</p>
-    <%= simple_form_for [@new_inscription] do |f| %>
-      <%= f.input :formation, input_html: {value: @formation.id}, as: :hidden %>
-      <%= f.input :user, input_html: {value: current_user.id}, as: :hidden %>
-      <%= f.input :order, input_html: {value: @order.id}, as: :hidden %>
-      <%= f.submit %>
+  <% if !@order.nil? %>
+    <% if @order.state == "pending" %>
+      <%= simple_form_for [@new_inscription] do |f| %>
+        <%= f.input :formation, input_html: {value: @formation.id}, as: :hidden %>
+        <%= f.input :user, input_html: {value: current_user.id}, as: :hidden %>
+        <%= f.input :order, input_html: {value: @order.id}, as: :hidden %>
+        <%= f.submit %>
+      <% end %>
     <% end %>
   <% end %>
 <% else %>
