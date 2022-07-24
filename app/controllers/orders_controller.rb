@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :paypal_init, :except => [:show, :create]
+  #before_action :paypal_init, :except => [:show, :create]
+  #before_action :find_formation
   skip_before_action :verify_authenticity_token
 
   def show
@@ -26,7 +27,9 @@ class OrdersController < ApplicationController
   end
 
   def create_order
-    price = formation.prix
+    # byebug
+    # formation = Formation.find(params[:id])
+    price = '1'
     request = PayPalCheckoutSdk::Orders::OrdersCreateRequest::new
     request.request_body({
       :intent => 'CAPTURE',
@@ -73,7 +76,11 @@ class OrdersController < ApplicationController
   private
 
   def paypal_init
-    environment = PayPal::SandboxEnvironment.new ENV['client_id'], ENV['client_secret']
-    @client = PayPal::PayPalHttpClient.new environment
+  #environment = PayPal::SandboxEnvironment.new ENV['client_id'], ENV['client_secret']
+    #@client = PayPal::PayPalHttpClient.new environment
+  end
+
+  def find_formation
+    #formation = Formation.find(params[:formation_id])
   end
 end
