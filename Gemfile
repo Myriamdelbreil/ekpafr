@@ -115,3 +115,5 @@ gem "font-awesome-sass", "~> 6.1"
 gem 'stripe_event'
 
 gem 'paypal-express'
+
+gem 'paypal-sdk-rest'
