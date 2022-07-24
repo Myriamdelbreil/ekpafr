@@ -123,17 +123,55 @@
             <h4 class="text-center">S'inscrire et régler</h4>
             <div class="row">
               <div class="d-flex justify-content-center col-6">
-                <div class="paiements-btn">En carte bleue</div>
+                <div class="paiements-btn d-flex justify-content-center align-items-center">
+                  <%= simple_form_for [@formation, @new_order] do |f| %>
+                    <%= f.input :formation, input_html: {value: @formation}, as: :hidden %>
+                    <%= f.input :user, input_html: {value: current_user}, as: :hidden %>
+                    <%= submit_tag 'En carte bleue', class:"btn btn-link" %>
+                  <% end %>
+                </div>
               </div>
               <div class="d-flex justify-content-center col-6">
-                <div class="paiements-btn d-flex justify-content-center align-items-center">Paypal</div>
+                <div class="paiements-btn d-flex justify-content-center align-items-center">
+                  <div id="paypal-button-container"></div>
+                  <script src="https://www.paypal.com/sdk/js?client-id=AdurcPY4JqwnFY6qKcEtIvYITb5_22nOO8i9FH5WWggKmCB1VLxf9R_UQHzNAE6O9taDhI0bHLP3FvLo"></script>
+                  <script>
+                    paypal.Buttons({
+                      env: 'sandbox', // Valid values are sandbox and live.
+                      createOrder: async () => {
+                        const response = await fetch('/create_order', {method: 'POST'});
+                        const responseData = await response.json();
+                        return responseData.token;
+                      },
+                      onApprove: async (data) => {
+                        const response = await fetch('/capture_order', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify({order_id: data.orderID})
+                        });
+                        const responseData = await response.json();
+                        if (responseData.status === 'COMPLETED') {
+                          alert('COMPLETED');
+                          // REDIRECT TO SUCCESS PAGE
+                        }
+                      }
+                    }).render('#paypal-button-container');
+                  </script>
+                </div>
               </div>
             </div>
           </div>
         </div>
       <% end %>
     <% else %>
-      <p>Inscrivez-vous.</p>
+      <div class="container bg-info py-4 rounded">
+        <h3 class="text-center">Vous souhaitez suivre la formation <%= @formation.titre %> ?</h3>
+          <div class="d-flex justify-content-center">
+            <%= link_to "Inscrivez-vous !", new_user_registration_path, class:"btn btn-light" %>
+          </div>
+      </div>
     <% end %>
   </div>
 </div>

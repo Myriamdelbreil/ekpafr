@@ -40,7 +40,6 @@ class ContactsController < ApplicationController
     else
       redirect_to root_path
     end
-    # byebug
   end
 
 
