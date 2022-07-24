@@ -40,10 +40,6 @@ class ContactsController < ApplicationController
     else
       redirect_to root_path
     end
-    # byebug
-    if @contact.save!
-      ContactMailer.send_contact_email(@contact).deliver_now
-    end
   end
 
 
