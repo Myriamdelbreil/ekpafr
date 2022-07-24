@@ -29,44 +29,44 @@ class OrdersController < ApplicationController
   def create_order
     # byebug
     # formation = Formation.find(params[:id])
-    price = '1'
-    request = PayPalCheckoutSdk::Orders::OrdersCreateRequest::new
-    request.request_body({
-      :intent => 'CAPTURE',
-      :purchase_units => [
-        {
-          :amount => {
-            :currency_code => 'USD',
-            :value => price
-          }
-        }
-      ]
-    })
+    # price = '1'
+    # request = PayPalCheckoutSdk::Orders::OrdersCreateRequest::new
+    # request.request_body({
+    #   :intent => 'CAPTURE',
+    #   :purchase_units => [
+    #     {
+    #       :amount => {
+    #         :currency_code => 'USD',
+    #         :value => price
+    #       }
+    #     }
+    #   ]
+    # })
 
-    begin
-      response = @client.execute request
-      order = Order.new
-      order.price = price.to_i
-      order.token = response.result.id
-      return render :json => {:token => response.result.id}, :status => :ok if order.save
-      rescue PayPalHttp::HttpError => ioe
-      # HANDLE THE ERROR
-    end
+    # begin
+    #   response = @client.execute request
+    #   order = Order.new
+    #   order.price = price.to_i
+    #   order.token = response.result.id
+    #   return render :json => {:token => response.result.id}, :status => :ok if order.save
+    #   rescue PayPalHttp::HttpError => ioe
+    #   # HANDLE THE ERROR
+    # end
   end
 
-  def capture_order
-    request = PayPalCheckoutSdk::Orders::OrdersCaptureRequest::new params[:order_id]
-    begin
-      response = @client.execute request
-      order = Order.find_by :token => params[:order_id]
-      order.paid = response.result.status == 'COMPLETED'
-      if order.save
-        return render :json => {:status => response.result.status}, :status => :ok
-      end
-    rescue PayPalHttp::HttpError => ioe
-      # HANDLE THE ERROR
-    end
-  end
+  # def capture_order
+  #   request = PayPalCheckoutSdk::Orders::OrdersCaptureRequest::new params[:order_id]
+  #   begin
+  #     response = @client.execute request
+  #     order = Order.find_by :token => params[:order_id]
+  #     order.paid = response.result.status == 'COMPLETED'
+  #     if order.save
+  #       return render :json => {:status => response.result.status}, :status => :ok
+  #     end
+  #   rescue PayPalHttp::HttpError => ioe
+  #     # HANDLE THE ERROR
+  #   end
+  # end
 
   def stripe_success
     session = Stripe::Checkout::Session.retrieve(params[:session_id])
